@@ -1,0 +1,157 @@
+/* Common Button's Style */
+.primary-btn{
+    background-color: $color-primary;
+    color: $color-white;
+    border: 1px solid transparent;
+    border-color: $color-primary;
+    padding: 0.786rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 0.358rem;
+    @extend %transition;
+    &:hover:not(.disabled):not(:disabled),
+    &:focus-visible {
+        box-shadow: 0 8px 25px -8px $color-primary;
+    }
+}
+
+.theme-toggler{
+    top: 10px;
+    left: 10px;
+    color: $color-text--dark;
+    background-color: $color-bg--dark;
+    font-size: 0.8rem;
+    padding: 0.786rem 1.5rem;
+    border-radius: 0.358rem;
+    @extend %transition;
+    @include dark-mode{
+        color: $color-text;
+        background-color: $color-bg;
+    }
+    &:hover,
+    &:focus-visible{
+        outline: 3px solid $color-primary;
+    }
+}
+
+.badge{
+    font-size: 85%;
+    font-weight: 600;
+    color: $color-primary;
+    background-color: rgba($color-primary, $alpha: 0.12);
+    &--primary{
+        color: $color-primary;
+        background-color: rgba($color-primary, $alpha: 0.12);
+    }
+    &--success{
+        color: $color-success;
+        background-color: rgba($color-success, $alpha: 0.12);
+    }
+    &--warning{
+        color: $color-warning;
+        background-color: rgba($color-warning, $alpha: 0.12);
+    }
+    &--danger{
+        color: $color-danger;
+        background-color: rgba($color-danger, $alpha: 0.12);
+    }
+    &--info{
+        color: $color-info;
+        background-color: rgba($color-info, $alpha: 0.12);
+    }
+}
+
+.btn-outline{
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid $color-primary;
+    background-color: transparent;
+    color: $color-primary;
+    padding: 0.786rem 1.5rem;
+    line-height: 1;
+    border-radius: 0.358rem;
+    &--secondary{
+        color: $color-gray;
+        border-color: $color-gray;
+        &:hover,
+        &:focus-visible{
+            background-color: rgba($color-gray, $alpha: 0.04);
+        }
+        &:active{
+            background-color: rgba($color-gray, $alpha: 0.2);
+        }
+    }
+    &--success{
+        color: $color-success;
+        border-color: $color-success;
+        &:hover,
+        &:focus-visible{
+            background-color: rgba($color-success, $alpha: 0.04);
+        }
+        &:active{
+            background-color: rgba($color-success, $alpha: 0.2);
+        }
+    }
+    &--danger{
+        color: $color-danger;
+        border-color: $color-danger;
+        &:hover,
+        &:focus-visible{
+            background-color: rgba($color-danger, $alpha: 0.04);
+        }
+        &:active{
+            background-color: rgba($color-danger, $alpha: 0.2);
+        }
+    }
+}
+
+.show-tag-btn{
+    color: $color-text;
+    @include dark-mode{
+        color: $color-text--dark;
+    }
+    display: inline-flex;
+    align-items: center;
+    padding: 0.58rem 1.5rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    @extend %transition;
+    &:hover,
+    &:focus-visible{
+        color: $color-primary;
+    }
+    &__color{
+        display: inline-block;
+        width: toRem(10);
+        height: toRem(10);
+        border-radius: 50%;
+        background-color: $color-primary;
+        margin-right: toRem(15);
+    }
+    &--success{
+        .show-tag-btn__color{
+            background-color: $color-success;
+        }
+    }
+    &--warning{
+        .show-tag-btn__color{
+            background-color: $color-warning;
+        }
+    }
+    &--danger{
+        .show-tag-btn__color{
+            background-color: $color-danger;
+        }
+    }
+    &--info{
+        .show-tag-btn__color{
+            background-color: $color-info;
+        }
+    }
+}
+
+.btn-sm{
+    font-size: 0.9rem;
+    padding: 0.486rem 1rem !important;
+}

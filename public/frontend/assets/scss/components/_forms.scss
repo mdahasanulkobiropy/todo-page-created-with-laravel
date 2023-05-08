@@ -1,0 +1,66 @@
+/* Common Forms's Style */
+.task-modal__form{
+    .form{
+        &-group{
+            .invalid-feedback{
+                color: $color-danger;
+                font-size: toRem(12);
+            }
+        }
+        &-control{
+            color: $color-text;
+            caret-color: $color-primary;
+            text-shadow: none;
+            height: 2.714rem;
+            border-color: darken($color-border, $amount: 5);
+            border-radius: 0.357rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            @include dark-mode{
+                color: $color-text--dark;
+                border-color: lighten($color-border--dark, $amount: 5);
+            }
+            &::placeholder{
+                opacity: 0.5;
+                @include dark-mode{
+                    color: $color-text--dark;
+                }
+            }
+            &:hover,
+            &:focus{
+                border-color: $color-primary;
+            }
+            &:focus{
+                box-shadow: 0 3px 10px 0 rgba($color-shadow, $alpha: 0.1);
+            }
+            &--textarea{
+                height: auto;
+                min-height: toRem(100);
+            }
+        }
+    }
+}
+.form-control.is-invalid,
+.was-validated .form-control:invalid,
+.form-control.is-valid,
+.was-validated .form-control:valid{
+    background-image: none;
+    padding-right: initial;
+    &:focus{
+        box-shadow: none;
+    }
+}
+.form-control.is-invalid,
+.was-validated .form-control:invalid{
+    border-color: $color-danger;
+    &:focus{
+        border-color: $color-danger;
+    }
+    
+}
+.form-control.is-valid,
+.was-validated .form-control:valid{
+    border-color: $color-primary;
+    &:focus{
+        border-color: $color-primary;
+    }
+}

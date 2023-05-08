@@ -1,0 +1,724 @@
+/* Reset CSS */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+::selection{
+	color: $color-white;
+	background: $color-primary;
+}
+
+html,
+body{
+	scroll-behavior: smooth;
+}
+
+html{
+	font-size: 14px;
+	letter-spacing: 0.01rem;
+	text-size-adjust: none;
+}
+
+body{
+    font-family: $font-primary;
+    color: $color-text;
+    background-color: $color-page-bg;
+    @include dark-mode{
+        color: $color-text--dark;
+        background-color: $color-page-bg--dark;
+    }
+	@extend %transition;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;
+	color: unset;
+}
+
+button,
+button:hover,
+button:focus,
+button:active {
+	outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+	-webkit-text-fill-color: $color-text;
+	@include dark-mode{
+		-webkit-text-fill-color: $color-text--dark;
+	}
+	transition: background-color 5000s;
+	-webkit-box-shadow: 0 0 0 #0000 inset;
+	box-shadow: 0 0 0 #0000 inset;
+	&::selection{
+		-webkit-text-fill-color: $color-white;
+	}
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+img{
+	object-fit: cover;
+	image-rendering: pixelated;
+}
+
+.user-select-none{
+	pointer-events: none;
+}
+
+.list-inline{
+	font-size: 0;
+	&-item{
+		font-size: 1rem;
+	}
+}
+
+/* Custom Container Style */
+.main__container{
+	max-width: 1440px;
+	padding: 0 2rem;
+	@include tablet{
+		padding: 0 1.2rem;
+	}
+}
+
+.text-muted{
+	@extend %transition;
+	color: #b9b9c3 !important;
+	@include dark-mode{
+		color: #676d7d !important;
+	}
+}
+
+.custom-dropdown{
+	.dropdown-toggle{
+		color: $color-text;
+		@extend %transition;
+		@include dark-mode{
+			color: $color-text--dark;
+		}
+		&::after{
+			display: none;
+		}
+		&:hover,
+		&:focus-visible{
+			color: $color-primary;
+		}
+	}
+}
+
+.select2{
+	&-selection{
+		min-height: 2.714rem !important;
+		border-color: darken($color-border, $amount: 5) !important;
+		@include dark-mode{
+			border-color: $color-border--dark !important;
+		}
+		background-color: transparent !important;
+		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		&:hover,
+		&:focus{
+			border-color: $color-primary !important;
+		}
+		&__rendered{
+			color: $color-text !important;
+			height: 100%;
+			line-height: auto !important;
+		}
+		&__choice{
+			display: inline-flex !important;
+			flex-direction: row-reverse;
+			padding: toRem(3) !important;
+			color: $color-white !important;
+			background-color: $color-primary !important;
+			border: 0 !important;
+			&__display{
+				display: flex;
+				align-items: center;
+				font-size: toRem(10);
+				.media{
+					&__image{
+						border: 2px solid $color-white;
+						object-fit: cover;
+					}
+					&-body__text{
+						margin-left: toRem(5);
+					}
+				}
+			}
+			&__remove{
+				color: $color-white !important;
+				display: block !important;
+				border: 0 !important;
+				position: unset !important;
+				border-radius: 2px !important;
+				padding: 0 6px !important;
+				font-size: 16px;
+				&:hover{
+					background-color: $color-danger !important;
+				}
+			}
+		}
+		&__arrow{
+			height: 100% !important;
+		}
+	}
+	&-search__field{
+		color: $color-text !important;
+		caret-color: $color-primary;
+		background-color: transparent !important;
+		border-radius: 0.357rem !important;
+		border-color: darken($color-border, $amount: 5) !important;
+		height: toRem(20) !important;
+		@include dark-mode{
+			color: $color-text--dark !important;
+			border-color: $color-border--dark !important;
+		}
+		&::placeholder{
+			opacity: 0.5;
+			@include dark-mode{
+				color: $color-text--dark;
+			}
+		}
+	}
+	&-container{
+		width: 100% !important;
+		&--open{
+			.select2-selection{
+				border-color: $color-primary !important;
+			}
+		}
+	}
+	&-dropdown{
+		border-color: $color-border !important;
+		background-color: $color-bg !important;
+		@include dark-mode{
+			border-color: $color-border--dark !important;
+			background-color: $color-bg--dark !important;
+		}
+	}
+	&-results{
+		&__option{
+			.media{
+				&__image{
+					border: 1px solid $color-text;
+					object-fit: cover;
+				}
+				&-body__text{
+					font-size: toRem(14);
+					margin-left: toRem(5);
+				}
+			}
+			&--highlighted{
+				color: $color-primary !important;
+				background-color: rgba($color-primary, $alpha: 0.12) !important;
+			}
+			&--selected{
+				color: $color-white !important;
+				background-color: $color-primary !important;
+				.media__image{
+					border-color: $color-white;
+				}
+				&:hover,
+				&:focus,
+				&:active{
+					color: $color-white !important;
+					background-color: $color-primary !important;
+				}
+			}
+			&.select2-results__message{
+				color: $color-danger;
+			}
+		}
+	}
+}
+
+.flatpickr{
+	&-calendar{
+		background-color: $color-bg !important;
+		border: 1px solid $color-border;
+		box-shadow: 0 5px 25px rgba($color-shadow, $alpha: 0.1) !important;
+		@include dark-mode{
+			border-color: $color-border--dark !important;
+			background-color: $color-bg--dark !important;
+			box-shadow: 0 5px 25px rgba($color-black, $alpha: 0.24) !important;
+		}
+		&::before,
+		&::after{
+			border-bottom-color: $color-border;
+		}
+	}
+	&-day{
+		color: $color-text;
+		@include dark-mode{
+			color: $color-text--dark;
+		}
+		&:hover,
+		&:active{
+			color: $color-primary;
+			background-color: rgba($color-primary, $alpha: 0.12);
+			border-color: rgba($color-primary, $alpha: 0.12);
+		}
+		&.today {
+			border-color: $color-primary;
+			&:hover,
+			&:active{
+				color: $color-primary;
+				border-color: $color-primary;
+				background-color: rgba($color-primary, $alpha: 0.12);
+			}
+		}
+		&.selected{
+			background-color: $color-primary;
+			border-color: $color-primary;
+			&:hover,
+			&:active{
+				background-color: $color-primary;
+				border-color: $color-primary;
+			}
+		}
+		&.prevMonthDay,
+		&.nextMonthDay{
+			&:hover,
+			&:focus,
+			&:active{
+				color: $color-primary;
+				border-color: transparent;
+				background-color: rgba($color-primary, $alpha: 0.12);
+			}
+		}
+	}
+	&-months .flatpickr-month,
+	&-weekdays .flatpickr-weekday{
+		color: $color-text;
+		@include dark-mode{
+			color: $color-text--dark;
+		}
+	}
+	&-months{
+		.flatpickr-prev-month,
+		.flatpickr-next-month{
+			@include dark-mode{
+				fill: $color-text--dark;
+			}
+		}
+	}
+}
+
+.custom-scrollbar{
+	position: relative;
+}
+
+.main{
+    &__wrapper{
+        border: 1px solid $color-border;
+        border-radius: 0.428rem;
+        background-color: $color-bg;
+		height: 80vh;
+		max-height: toRem(800);
+        @include dark-mode{
+            background-color: $color-bg--dark;
+            border-color: $color-border--dark;
+        }
+		@extend %transition;
+    }
+	&__aside{
+		@include desktop-lg{
+			position: absolute;
+			z-index: 2;
+			height: 100%;
+			background-color: $color-bg;
+			@include dark-mode{
+				background-color: $color-bg--dark;
+			}
+			&:not(.show){
+				transform: translateX(-100%);
+			}
+		}
+		width: 100%;
+		max-width: toRem(280);
+		@include mobile{
+			max-width: toRem(230);
+		}
+		border-right: 1px solid $color-border;
+		@include dark-mode{
+            border-color: $color-border--dark;
+        }
+		@extend %transition;
+		&__toggler{
+			font-size: toRem(20);
+			padding-left: toRem(5);
+			padding-right: toRem(5);
+			color: $color-text;
+			@include dark-mode{
+				color: $color-text--dark;
+			}
+			@include min-desktop-lg{
+				display: none;
+			}
+			&:hover{
+				color: $color-primary;
+			}
+		}
+		&--closer{
+			position: absolute;
+			@include desktop-lg{
+				width: 100%;
+				height: 100%;
+				background-color: rgba($color-shadow, $alpha: 0.4);
+				z-index: 1;
+				display: none;
+			}
+		}
+		&__header{
+			padding: 1.5rem;
+		}
+		&__body{
+			height: calc(100% - 80px);
+			.nav-pills{
+				.nav-link{
+					color: darken($color-text, $amount: 10);
+					@include dark-mode{
+						color: $color-text--dark;
+
+					}
+					font-size: 1rem;
+					font-weight: 500;
+					letter-spacing: 0.4px;
+					padding: 0.58rem 1.5rem;
+					border-left: 2px solid transparent;
+					border-radius: 0;
+					line-height: 1.5;
+					background-color: transparent;
+					@extend %transition;
+					&.active,
+					&:hover,
+					&:focus-visible{
+						color: $color-primary;
+					}
+					&.active{
+						border-color: $color-primary;
+					}
+					&__icon{
+						font-size: 1.3rem;
+					}
+					&__text{
+						margin-left: toRem(14);
+					}
+				}
+			}
+			&__tags-card{
+				&__header{
+					padding-left: 1.5rem;
+					padding-right: 1.5rem;
+					&__title{
+						font-size: toRem(12);
+					}
+					&__add-btn{
+						font-size: toRem(15);
+						color: $color-text;
+						@include dark-mode{
+							color: $color-text--dark;
+						}
+						&:hover,
+						&:focus-visible{
+							color: $color-primary;
+						}
+					}
+				}
+			}
+		}
+	}
+	&__content{
+		&__header{
+			padding: 0.35rem 0.5rem;
+			border-bottom: 1px solid $color-border;
+			@include dark-mode{
+				border-color: $color-border--dark;
+			}
+			@extend %transition;
+		}
+		&__search-form{
+			&__control{
+				color: $color-text;
+				height: 2.714rem;
+				padding: 0.438rem 1rem;
+				font-weight: 400;
+				caret-color: $color-primary;
+				@include dark-mode{
+					color: $color-text--dark;
+				}
+				@extend %transition;
+			}
+			&__btn{
+				width: toRem(42);
+				font-size: 1rem;
+				@extend %transition;
+				&:hover,
+				&:focus-visible{
+					color: $color-primary !important;
+				}
+			}
+		}
+		.custom-dropdown{
+			.dropdown{
+				&-toggle{
+					font-size: toRem(20);
+				}
+				&-menu {
+					border-radius: 0.358rem;
+					box-shadow: 0 5px 25px rgba(34, 41, 47, 0.1);
+					@include dark-mode{
+						background-color: $color-bg--dark;
+						box-shadow: 0 5px 25px rgba($color-black, $alpha: 0.24);
+					}
+				}
+				&-link{
+					color: lighten($color-text, $amount: 2);
+					background-color: transparent;
+					@include dark-mode{
+						color: $color-text--dark;
+					}
+					padding: 0.65rem 1.28rem;
+					&:hover,
+					&:focus-visible{
+						color: $color-primary;
+						background-color: rgba($color-primary, $alpha: 0.12);
+					}
+					&:active{
+						color: $color-white;
+						background-color: $color-primary;
+					}
+				}
+			}
+		}
+		&__body{
+			height: calc(100% - 3.6rem);
+		}
+		&__list{
+			&__item{
+				cursor: pointer;
+				position: relative;
+				@extend %transition;
+				&:not(:first-child){
+					border-top: 1px solid $color-border;
+					@include dark-mode{
+						border-color: $color-border--dark;
+					}
+				}
+				&:hover{
+					transform: translateY(-4px);
+					box-shadow: 0 3px 10px 0 #ebe9f1;
+					@include dark-mode{
+						box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.24);
+					}
+				}
+				.task-checkbox{
+					position: absolute;
+					top: toRem(15);
+					@include min-desktop{
+						top: 50%;
+						transform: translateY(-50%);
+					}
+					left: toRem(20);
+					width: toRem(20);
+					height: toRem(20);
+					appearance: none;
+					&-label{
+						position: absolute;
+						top: toRem(15);
+						@include min-desktop{
+							top: 50%;
+							transform: translateY(-50%);
+						}
+						left: toRem(20);
+						width: toRem(18);
+						height: toRem(18);
+						border-radius: 3px;
+						border: 1px solid #d8d6de;
+						box-sizing: border-box;
+					}
+					&:checked ~ .main__content__list__item__wrapper{
+						.main__content__list__item__content__title{
+							color: rgba($color-text, $alpha: 0.5);
+							&::after{
+								width: 100%;
+								transition-delay: 0.3s;
+							}
+						}
+						.task-checkbox-label{
+							background-color: $color-primary;
+							border-color: $color-primary;
+							box-shadow: 0 2px 4px 0 rgba(115, 103, 240, 0.4) !important;
+							background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9.5 7.5'%3E%3Cpolyline points='0.75 4.35 4.18 6.75 8.75 0.75' style='fill:none;stroke:%23fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px'/%3E%3C/svg%3E");
+							background-size: 65%;
+							background-repeat: no-repeat;
+							background-position: center;
+						}
+					}
+					&:hover,
+					&:focus-visible{
+						~ .main__content__list__item__wrapper{
+							pointer-events: none;
+							.task-checkbox-label{
+								border-color: $color-primary;
+							}
+						}
+					}
+				}
+				&__wrapper{
+					padding: toRem(15) toRem(20);
+				}
+				&__content{
+					padding-left: toRem(35);
+					@include desktop{
+						margin-bottom: toRem(20);
+					}
+					&__title{
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						position: relative;
+						font-size: 1rem;
+						font-weight: 300;
+						@extend %transition;
+						&::after{
+							content: "";
+							position: absolute;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+							width: 0;
+							height: 1px;
+							background-color: $color-text;
+							opacity: 0.5;
+							transition: width .3s ease-in-out;
+						}
+					}
+				}
+				&__actions{
+					&__list{
+						@include desktop{
+							padding: toRem(10) 0;
+						}
+						gap: 0.5rem;
+						.badge{
+							line-height: unset;
+						}
+					}
+					&__time{
+						font-size: toRem(13);
+					}
+					&__avatar{
+						&__item{
+							position: relative;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							width: toRem(30);
+							height: toRem(30);
+							margin-left: -5px;
+							margin-right: -5px;
+							color: $color-primary;
+							background-color: lighten($color-primary, $amount: 25);
+							border: 2px solid $color-border;
+							@include dark-mode{
+								border-color: $color-border--dark;
+							}
+							@extend %transition;
+							transform: scale(1) translateY(0);
+							&:nth-last-child(2){
+								margin-right: 0;
+							}
+							&:hover,
+							&:focus-visible{
+								z-index: 1;
+								transform: scale(1.1) translateY(-10%);
+							}
+						}
+					}
+				}
+			}
+		}
+		&__no-results{
+			display: none;
+			padding: 1.5rem;
+			&.show{
+				display: block;
+			}
+			&__text{
+				color: $color-danger;
+				font-size: toRem(16);
+			}
+		}
+	}
+}
+
+.task-modal{
+	&.fade{
+		.modal-dialog{
+			transform: translate(100%, 0);
+		}
+		&.show{
+			.modal-dialog{
+				transform: translate(0, 0);
+			}
+		}
+	}
+	.modal{
+		&-dialog{
+			top: 0;
+			right: 0;
+			max-width: 100%;
+			@include min-mobile{
+				max-width: toRem(420);
+			}
+		}
+		&-content{
+			background-color: $color-bg;
+			@include dark-mode{
+				background-color: $color-bg--dark;
+			}
+			box-shadow: 0 5px 20px 0 rgba($color-shadow, $alpha: 0.1);
+		}
+		&-header{
+			background-color: $color-bg-soft;
+			@include dark-mode{
+				background-color: $color-bg-soft--dark;
+			}
+			&__title{
+				font-size: toRem(15);
+				font-weight: 500;
+			}
+			.close{
+				@extend %transition;
+				color: $color-text;
+				opacity: 1;
+				@include dark-mode{
+					color: $color-text--dark;
+				}
+				&:hover,
+				&:focus-visible{
+					color: $color-danger;
+				}
+			}
+		}
+	}
+}
+.modal-backdrop {
+    background-color: $color-shadow;
+}
